@@ -3,7 +3,20 @@ import matplotlib.pyplot as plt
 
 print('hello world')
 
-# def palyndrome(chaine):
+
+def tupleSample():
+    s1=(1,2,3,1)
+    s2=(2,3,1)
+
+def dictsample():
+    print("DICT SAMPLE")
+    d1={'x':1, 'y':2}
+    print(d1['x'])
+    d1['x']=15
+    print(d1['x'])
+    for key in d1:
+        print(key)
+        print(d1[key])
 
 
 def listSample():
@@ -77,6 +90,8 @@ def afficher(n):
 
 
 def main():
+    dictsample()
+    tupleSample()
     listSample()
     exceptionSample("test")
     
