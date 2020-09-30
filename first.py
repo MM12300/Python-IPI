@@ -1,13 +1,51 @@
+import matplotlib.pyplot as plt
+
+
 print('hello world')
 
-def exceptionSample():
+# def palyndrome(chaine):
+
+
+def listSample():
+    l=[5,5.1,True,'coucou', 15+2j, [1,2,3]]
+    print(l[0])#premier élément
+    print(l[-1])#dernier élément
+    print(l[5][0])#premier élément du sous tableau
+    for elt in l:
+        print(elt)
+    print(l[0:4])#affiche une sous liste des index 1 à 3, borne exclusive
+
+    r=list(range(100))
+    print(r[0::2]) #afficher nombre pair
+
+    m=[i for i in range(10) if i%2==0 if i<7]
+    print(m)
+
+    n=[x*x for x in [.1*i for i in range(100)]]
+    #son truc de PLOT ne marche pas 
+    plt.plot(n)
+    plt.ylabel('test')
+    plt.show()
+
+    #CONCATENATION
+    #'aaaa'+'bbbb'='aaaabbbb'
+
+    #les chaines de caractères sont immuables
+    #chaine[1]='c' INTERDIT !
+
+    l[0]=1983
+    l2=[2]*10
+    l3=l+l2+[152]*2
+    print('l3')
+    print(l3)
+
+def exceptionSample(a):
     try:
         entier=int(a)
         print(entier)
     except Exception as e:
-        print(e)
-
-
+        if 'int()' in str(e):
+            print("Attention erreur de conversion d'entier")
 
 
 def afficher(n):
@@ -39,6 +77,9 @@ def afficher(n):
 
 
 def main():
+    listSample()
+    exceptionSample("test")
+    
     #les variables sont fortement typées mais déclarées à l'affectation et du type de leur contenu
 
     message="Comment vas-tu ajourd'hui ?"
