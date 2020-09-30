@@ -1,3 +1,5 @@
+book={}
+
 def nouvelleFiche(vNom, vAge, vFonction, vTel, vMail, vAdresse):
     return { 
     "nom": vNom,
@@ -24,6 +26,19 @@ def subscribe():
     print(new)
     book={"Fiche1" : [new]}
     print(book)
+
+    # print(book.get("Fiche1"))
+
+    # print(findFile('Fiche1'))
+    print("resultat:")
+    findFile(book, "Fiche1")
+
+    
+
+def findFile(array, key):
+    research=array.get(key)
+    return print(research)
+
 
 if __name__=='__main__':
     subscribe()
