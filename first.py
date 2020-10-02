@@ -9,7 +9,7 @@ def tupleSample():
     s2=(2,3,1)
 
 def dictsample():
-    print("DICT SAMPLE")
+    print("DICT SMPLE")
     d1={'x':1, 'y':2}
     print(d1['x'])
     d1['x']=15
