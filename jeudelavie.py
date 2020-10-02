@@ -13,45 +13,69 @@ grille=[]
 def vanillaGrid(m,n):
     for n in range(n):
         grille.append([random.randrange(0,2) for i in range(m)])
-    print(grille)
+    
+    # print(grille)
 
 # def npGrid(m,n):
 #     grille = np.array([[0] * m] * n)
 #     return grille
 
 def transfoGrid(grid):
-    for key in grid :
+    for key in grille:
         print(key)
 
 def cellState(x,y):
 
-    neighborhood=int(grille[x-1][y-1]+grille[x-1][y]+grille[x-1][y+1]
-                    +grille[x][y-1]+grille[x][y+1]
-                    +grille[x+1][y-1]+grille[x+1][y]+grille[x+1][y+1])
+    #si x=0 : retirer les x-1
+    #si x=longueur tableau, retirer les x+1
+    #si y=0 : retirer les y-1
+    #si y=longueur tableau, retirer les y+1
+    #si x=0 et y=0, retirer les x-1 et y-1
+    #si x=longueur et y=longueur, retirer les x+1 et y+1
+    #si x=longueur y=0, retirer les x+1 et y-1
+    #si x=0 et y=longueur, retirer x-1 et y+1
 
-    print (neighborhood)
+
+
+    
+    neighborhood=int(
+        grille[x-1][y-1]
+        +grille[x-1][y]
+        +grille[x-1][y+1]
+        +grille[x][y-1]
+        +grille[x][y+1]
+        +grille[x+1][y-1]
+        +grille[x+1][y]
+        +grille[x+1][y+1]
+        )
+
+    # print (neighborhood)
 
     if (neighborhood < 2) or (neighborhood > 3):
         grille[x][y]=0
     elif neighborhood == 3:
         grille[x][y]=1
     
-    return print(transfoGrid(grille))
+    # print(transfoGrid(grille))
 
-def gridCellState(grille):
-    #à appliquer la fonction cellstate à toutes les entrées du tableau
-    for grille in grille:
-        for i in grille:
-            print (i)
+def gridCellState(grill,m,n):
+    vanillaGrid(n,m)
+    #lis chaque entrée de la grille
+    for x in range(m): 
+        for y in range(n): 
+            cellState(x,y)
 
     
 
 
 def main():
-       vanillaGrid(3,3)
-       print(transfoGrid(grille))
-       cellState(1,1)
-       gridCellState(grille)
+    gridCellState(grille,10,10)
+    transfoGrid(grille)
+    gridCellState(grille,10,10)
+    transfoGrid(grille)
+    
+
+
 
 
 
