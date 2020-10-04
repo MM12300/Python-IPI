@@ -281,29 +281,92 @@ def test(grille,m,n):
 
 
 
+def cap (a, arrayL):
+    if a == 0 :
+        a = arrayL
+    elif a > arrayL :
+        a = 0
+    else : 
+        a = a 
+
 
 def main():
     vanillaGrid(5,5)
     for ligne in grille:
-            x = len(ligne)
+            m = len(ligne)
             grilleL= len(grille)-1
             ligneL = len(ligne)-1
-            for cell in range(x):
+            for cell in range(m):
                 y= grille.index(ligne)
                 x= cell
                 z = (y,x)
-                if y == 0:
-                    print("N")
-                elif x == 0:
-                    print("W")
-                elif y == grilleL:
-                    print("S")
-                elif x == ligneL:
-                    print("E")
+
+                neighborhood=int(
+                                    grille[cap(x-1,ligneL)][cap(y-1, grilleL)]
+                                    +grille[cap(x-1,ligneL)][cap(y,grilleL)]
+                                    +grille[cap(x-1,ligneL)][cap(y+1,grilleL)]
+                                    +grille[cap(x,ligneL)][cap(y-1, grilleL)]
+                                    +grille[cap(x,ligneL)][cap(y+1,grilleL)]
+                                    +grille[cap(x+1,ligneL)][cap(y-1, grilleL)]
+                                    +grille[cap(x+1,ligneL)][cap(y,grilleL)]
+                                    +grille[cap(x+1,ligneL)][cap(y+1,grilleL)]
+                                    )
+
+
+
+
+
+
+
+
+
+                # if y == 0 :
+                #     neighborhood=int(
+                #                     +grille[x-1][y]
+                #                     +grille[x-1][y+1]
+                #                     +grille[x][y+1]
+                #                     +grille[x+1][y]
+                #                     +grille[x+1][y+1]
+                #                     )
+                #     print(neighborhood)
+                # elif x == 0 :
+                #     print("W")
+                # elif y == grilleL:
+                #     print("S")
+                # elif x == ligneL:
+                #     print("E")
+                if y == 0 and x == 0 :
+                    neighborhood=int(
+                                    +grille[x-1][y]
+                                    +grille[x-1][y+1]
+                                    +grille[x][y+1]
+                                    +grille[x+1][y]
+                                    +grille[x+1][y+1]
+                                    )
+                    print(z)
+                    print(neighborhood)
+
                 if x != 0 and y!= 0 and x <ligneL and y<grilleL :
-                    print('middle')
+                    #GOOD
+                    neighborhood=int(
+                                    grille[x-1][y-1]
+                                    +grille[x-1][y]
+                                    +grille[x-1][y+1]
+                                    +grille[x][y-1]
+                                    +grille[x][y+1]
+                                    +grille[x+1][y-1]
+                                    +grille[x+1][y]
+                                    +grille[x+1][y+1]
+                                    )
+                    print(z)
+                    print(neighborhood)
+
+                    
             
-           
+
+
+
+
 
 
 
