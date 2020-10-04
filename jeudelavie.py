@@ -311,6 +311,8 @@ def main():
                                     +grille[cap(x+1,ligneL)][cap(y,grilleL)]
                                     +grille[cap(x+1,ligneL)][cap(y+1,grilleL)]
                                     )
+                
+                print(neighborhood)
 
 
 
@@ -335,44 +337,34 @@ def main():
                 #     print("S")
                 # elif x == ligneL:
                 #     print("E")
-                if y == 0 and x == 0 :
-                    neighborhood=int(
-                                    +grille[x-1][y]
-                                    +grille[x-1][y+1]
-                                    +grille[x][y+1]
-                                    +grille[x+1][y]
-                                    +grille[x+1][y+1]
-                                    )
-                    print(z)
-                    print(neighborhood)
+                # if y == 0 and x == 0 :
+                #     neighborhood=int(
+                #                     +grille[x-1][y]
+                #                     +grille[x-1][y+1]
+                #                     +grille[x][y+1]
+                #                     +grille[x+1][y]
+                #                     +grille[x+1][y+1]
+                #                     )
+                #     print(z)
+                #     print(neighborhood)
 
-                if x != 0 and y!= 0 and x <ligneL and y<grilleL :
-                    #GOOD
-                    neighborhood=int(
-                                    grille[x-1][y-1]
-                                    +grille[x-1][y]
-                                    +grille[x-1][y+1]
-                                    +grille[x][y-1]
-                                    +grille[x][y+1]
-                                    +grille[x+1][y-1]
-                                    +grille[x+1][y]
-                                    +grille[x+1][y+1]
-                                    )
-                    print(z)
-                    print(neighborhood)
+                # if x != 0 and y!= 0 and x <ligneL and y<grilleL :
+                #     #GOOD
+                #     neighborhood=int(
+                #                     grille[x-1][y-1]
+                #                     +grille[x-1][y]
+                #                     +grille[x-1][y+1]
+                #                     +grille[x][y-1]
+                #                     +grille[x][y+1]
+                #                     +grille[x+1][y-1]
+                #                     +grille[x+1][y]
+                #                     +grille[x+1][y+1]
+                #                     )
+                #     print(z)
+                #     print(neighborhood)
 
                     
-            
-
-
-
-
-
-
-
-
-
-
+           
 
 
 if __name__=='__main__':
