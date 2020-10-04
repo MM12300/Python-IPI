@@ -1,12 +1,19 @@
 import random
+import numpy as np
+
 grille=[]
 
 def vanillaGrid(m,n):
     for n in range(n):
         grille.append([random.randrange(0,2) for i in range(m)])
+    return grille
+
+def npGrid(m,n):
+    grille = np.array([[0] * m] * n)
+    return grille
 
 def transfoGrid(grid):
-    for key in grille:
+    for key in grid:
         print(key)
 
 
@@ -32,7 +39,7 @@ def main():
         for cell in range(m):
             y= grille.index(ligne)
             x= cell
-            z = (y,x)    
+            # z = (y,x)    
   
             neighborhood=int(
                                 grille[cap(x-1,ligneL)][cap(y-1, grilleL)]
@@ -54,4 +61,5 @@ def main():
     print(transfoGrid(grille))
 
 if __name__=='__main__':
-    main()
+    vanillaGrid(5,5)
+    transfoGrid(grille)
