@@ -252,100 +252,57 @@ def gameOfLife2(grille,m,n):
                 y = grille.index(ligne)
                 x = cell
 
-                #si x=0 : retirer les x-1
-                if x == 0 : 
-                    neighborhood=int(
-                                +grille[x][y-1]
-                                +grille[x][y+1]
-                                +grille[x+1][y-1]
-                                +grille[x+1][y]
-                                +grille[x+1][y+1]
-                                )
-                
-                #si x=longueur tableau, retirer les x+1
-                elif x==ligneL:
-                    neighborhood=int(
-                                grille[x-1][y-1]
-                                +grille[x-1][y]
-                                +grille[x-1][y+1]
-                                +grille[x][y-1]
-                                +grille[x][y+1]
-                                )
-
-                #si y=0 : retirer les y-1
-                elif y==0:
-                    neighborhood=int(
-                                +grille[x-1][y]
-                                +grille[x-1][y+1]
-                                +grille[x][y+1]
-                                +grille[x+1][y]
-                                +grille[x+1][y+1]
-                                )
-
-                #si y=longueur tableau, retirer les y+1
-                elif y==grilleL:
-                    neighborhood=int(
-                                grille[x-1][y-1]
-                                +grille[x-1][y]
-                                +grille[x][y-1]
-                                +grille[x+1][y-1]
-                                +grille[x+1][y]
-                                )
-                                        
-                #si x=0 et y=0, retirer les x-1 et y-1
-                elif x==0 and y==0:
-                    neighborhood=int(
-                                +grille[x][y+1]
-                                +grille[x+1][y]
-                                +grille[x+1][y+1]
-                                )
-                    
-                #si x=longueur et y=longueur, retirer les x+1 et y+1
-                elif x==ligneL and y==grilleL:
-                    neighborhood=int(
-                                grille[x-1][y-1]
-                                +grille[x-1][y]
-                                +grille[x][y-1]
-                                )
-
-                #si x=longueur y=0, retirer les x+1 et y-1
-                elif x==ligneL and y==0:
-                    neighborhood=int(
-                                +grille[x-1][y]
-                                +grille[x-1][y+1]
-                                +grille[x][y+1]
-                                )
-
-                #si x=0 et y=longueur, retirer x-1 et y+1
-                elif x==0 and y==grilleL:
-                    neighborhood=int(
-                                +grille[x][y-1]
-                                +grille[x+1][y-1]
-                                +grille[x+1][y]
-                                )
-                else:        
-                    neighborhood=int(
-                                grille[x-1][y-1]
-                                +grille[x-1][y]
-                                +grille[x-1][y+1]
-                                +grille[x][y-1]
-                                +grille[x][y+1]
-                                +grille[x+1][y-1]
-                                +grille[x+1][y]
-                                +grille[x+1][y+1]
-                                )
-
-                print(neighborhood)
                 
 
 
 
+
+                
+
+
+#Créer une grille : 
+grille=[]
+def test(grille,m,n):
+    #Remplir de cette grille de m lignes et n colonnes, remplis de 0 ou 1 aléatoirement
+    for n in range(n):
+        grille.append([random.randrange(0,2) for i in range(m)])
+
+    #Pour chaque ligne de cette grille
+        for ligne in grille:
+            grilleL= len(grille)
+            ligneL = len(ligne)
+            #Pour autant de fois que la longueur d'une ligne
+            for cell in range((ligneL)):
+                #On veut calculer le nb de voisin afin d'appliquer les règles du jeu
+                y = grille.index(ligne)
+                x = cell
+                z=(y,x)
+                print(z)
 
 
 
 
 def main():
-    gameOfLife(grille,5,5)
+    vanillaGrid(5,5)
+    for ligne in grille:
+            x = len(ligne)
+            grilleL= len(grille)-1
+            ligneL = len(ligne)-1
+            for cell in range(x):
+                y= grille.index(ligne)
+                x= cell
+                z = (y,x)
+                if y == 0:
+                    print("N")
+                elif x == 0:
+                    print("W")
+                elif y == grilleL:
+                    print("S")
+                elif x == ligneL:
+                    print("E")
+                if x != 0 and y!= 0 and x <ligneL and y<grilleL :
+                    print('middle')
+            
            
 
 
