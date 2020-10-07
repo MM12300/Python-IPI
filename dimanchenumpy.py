@@ -43,13 +43,24 @@ def main():
     vanillaGrid(10,10)
 
     os.system('cls||clear')
+
+
+    grille[1][1] = 1
+    grille[2][2] = 1
+    grille[3][1] = 1
+    grille[3][2] = 1
+    grille[3][3] = 1
+    
+   
     
     print(displayMap(grille))
     
     # transfoGrid(grille)
     print("Itération : 0")
-    time.sleep(10)
 
+    time.sleep(10)
+    
+    
                       
 
     #Repeating the code below 30 times
