@@ -12,12 +12,6 @@ def vanillaGrid(m,n):
         grille.append([random.randrange(0,2) for i in range(m)])
     return grille
   
-#Function to display the grid (a list of sublists) with numpy library
-def npDisp(grid):
-    disp = np.array(grid)
-
-    print(disp)
-
 def displayMap(map):
     for item in map:
         row = ""
@@ -43,12 +37,6 @@ def cap (a, arrayL):
     #in all other cases : value of index doesn't change
     else : 
         return a
-
-
-
-def transfoGrid(grid):
-    for key in grid:
-        print(key)
 
 def main():
     #Creating a grid
