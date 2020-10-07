@@ -26,7 +26,7 @@ def displayMap(map):
 
         print(row)
 
-    return True
+    return "Conway Game of Life"
 
 
 #Function to calculate if our coordinates in the grid are out of index
@@ -51,9 +51,10 @@ def main():
     #Creating a grid
     vanillaGrid(10,10)
 
+    os.system('cls||clear')
     print(displayMap(grille))
-    transfoGrid(grille)
-    
+    # transfoGrid(grille)
+    print("Itération : 1")
     time.sleep(1)
 
                       
@@ -102,11 +103,12 @@ def main():
                     grille[y][x]=1
                 
                 #Only in this 2 cases the cell state is changing, if none of this 2 rules apply then the cell keep the same state
+        os.system('cls||clear')
         print(displayMap(grille))
-        transfoGrid(grille)
-        
+        # transfoGrid(grille)
+        print("Itérations : "+str(n+1))
+        time.sleep(1)
 
-        time.sleep(10)
         #Change the value of the cells for a fancier display
         # for ligne in grille:
         #     for cell in range(m):
