@@ -41,17 +41,19 @@ def cap (a, arrayL):
 def main():
     #Creating a grid
     vanillaGrid(5,5)
+    print(grille)
+    time.sleep(5)
 
     os.system('cls||clear')
     
-    grille[1][1]= 1
-    grille[1][1]= 1
-    grille[2][2]= 1
-    grille[2][3]= 1
-    grille[3][1]= 1
-    grille[3][2]= 1
+    # grille[1][1]= 1
+    # grille[1][1]= 1
+    # grille[2][2]= 1
+    # grille[2][3]= 1
+    # grille[3][1]= 1
+    # grille[3][2]= 1
 
-    grille[4][4]= 1
+    # grille[4][3]= 1
    
     
     print(displayMap(grille))
@@ -67,13 +69,13 @@ def main():
     #Repeating the code below 30 times
     for n in range(30):
         #for each line of the grid
-        for ligne in grille:
-            m = len(ligne)
+        for ligne, value in enumerate(grille):
+            m = len(grille[0])
             grilleL= len(grille)-1
-            ligneL = len(ligne)-1
+            ligneL = len(grille[0])-1
             #for each cell of the grid
-            y= grille.index(ligne)
-            print(ligne)
+            y= ligne
+            print(y)
             for cell in range(m):
                 #coordinates system
                 x= cell
