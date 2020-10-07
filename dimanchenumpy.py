@@ -43,14 +43,10 @@ def main():
     vanillaGrid(10,10)
 
     os.system('cls||clear')
-
-
-    grille[1][1] = 1
-    grille[2][3] = 1
-    grille[3][1] = 1
-    grille[3][2] = 1
-    grille[3][3] = 1
     
+    grille[1][1]= 1
+    grille[2][1]= 1
+    grille[3][1]= 1
    
     
     print(displayMap(grille))
@@ -97,19 +93,13 @@ def main():
                                     +grille[cap(x+1,ligneL)][cap(y,grilleL)]
                                     +grille[cap(x+1,ligneL)][cap(y+1,grilleL)]
                                     )
-                #if a cell is alive
-                if grille[y][x] == 1:                 
-                    #if less than 2 cells or more than 3 cells in the neighborhood, the cell is dead (=0)
-                    if (neighborhood < 2) or (neighborhood > 3):
-                        #dead
-                        grille[y][x]=0
-
-                #else : the cell is dead (==0)
-                else :
-                    #if exactly 3 cells in the neighborhood, the cell is alive
-                    if neighborhood == 3:
-                    #alive
-                        grille[y][x]=1
+                
+                if grille[y][x]  == 1: 
+                    if (neighborhood < 2) or (neighborhood > 3): 
+                        grille[y][x] = 0 
+                else: 
+                    if neighborhood == 3: 
+                        grille[y][x] = 1
                 
                 #Only in this 2 cases the cell state is changing, if none of this 2 rules apply then the cell keep the same state
         os.system('cls||clear')
