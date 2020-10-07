@@ -1,0 +1,128 @@
+import random
+import os
+import time
+import numpy as np
+
+#Creating an empty grid (list)
+grille=[]
+
+#Adding n sublist, each of lenght m
+def vanillaGrid(m,n):
+    for n in range(n):
+        grille.append([random.randrange(0,2) for i in range(m)])
+    return grille
+  
+#Function to display the grid (a list of sublists) with numpy library
+def npDisp(grid):
+    disp = np.array(grid)
+
+    print(disp)
+
+def displayMap(map):
+    for item in map:
+        row = ""
+        for value in item:
+            row += "X " if(value) else "o "
+
+        print(row)
+
+    return True
+
+
+#Function to calculate if our coordinates in the grid are out of index
+#=====> we use indexes to identify our cells in the grid, grid[listIndex][sublistIndex] is used as a coordinates system
+def cap (a, arrayL):
+    #if index is <0 then we go to the other side of the grid : maximum index
+    if a < 0 :
+        a = arrayL
+        return a
+    #if index is > to the length of the sublist then we go to the other side of the grid : index [0]
+    elif a > arrayL :
+        a = 0
+        return a
+    #in all other cases : value of index doesn't change
+    else : 
+        return a
+def transfoGrid(grid):
+    for key in grid:
+        print(key)
+
+def main():
+    #Creating a grid
+    vanillaGrid(10,10)
+
+    print(displayMap(grille))
+    transfoGrid(grille)
+    
+    time.sleep(1)
+
+                      
+
+    #Repeating the code below 30 times
+    for n in range(30):
+        #assigning 0 and 1 values in order to calcul how many cells in the neighbourhood of the actual cell
+        #cleaning the fancier display we will do at the end of the loop
+        for ligne in grille:
+            for cell in range(10):
+                y= grille.index(ligne)
+                x= cell
+                if grille[y][x] == "o":
+                    grille[y][x] = 0
+                elif grille[y][x] == "X":
+                    grille[y][x] = 1
+
+        #for each line of the grid
+        for ligne in grille:
+            m = len(ligne)
+            grilleL= len(grille)-1
+            ligneL = len(ligne)-1
+            #for each cell of the grid
+            for cell in range(10):
+                #coordinates system
+                y= grille.index(ligne)
+                x= cell
+                #how many cell in our neighborhood, at the following coordinates and we used our function cap() to go to the other side of the grid in cases of cells at the edges
+                neighborhood=int(
+                                    grille[cap(x-1,ligneL)][cap(y-1, grilleL)]
+                                    +grille[cap(x-1,ligneL)][cap(y,grilleL)]
+                                    +grille[cap(x-1,ligneL)][cap(y+1,grilleL)]
+                                    +grille[cap(x,ligneL)][cap(y-1, grilleL)]
+                                    +grille[cap(x,ligneL)][cap(y+1,grilleL)]
+                                    +grille[cap(x+1,ligneL)][cap(y-1, grilleL)]
+                                    +grille[cap(x+1,ligneL)][cap(y,grilleL)]
+                                    +grille[cap(x+1,ligneL)][cap(y+1,grilleL)]
+                                    )
+                #if less than 2 cells or more than 3 cells in the neighborhood, the cell is dead (=0)
+                if (neighborhood < 2) or (neighborhood > 3):
+                    #dead
+                    grille[y][x]=0
+                #if exactly 3 cells in the neighborhood, the cell is alive
+                elif neighborhood == 3:
+                    #alive
+                    grille[y][x]=1
+                
+                #Only in this 2 cases the cell state is changing, if none of this 2 rules apply then the cell keep the same state
+        print(displayMap(grille))
+        transfoGrid(grille)
+        
+
+        time.sleep(10)
+        #Change the value of the cells for a fancier display
+        # for ligne in grille:
+        #     for cell in range(m):
+        #         y= grille.index(ligne)
+        #         x= cell
+        #         if grille[y][x] == 0:
+        #             print("test")
+        #             grille[y][x] = "o"
+        #         elif grille[y][x] == 1:
+        #             print("tesssss")
+        #             grille[y][x] = "X"
+
+
+  
+        
+
+if __name__=='__main__':
+    main()
+    
