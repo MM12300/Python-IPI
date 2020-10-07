@@ -45,8 +45,11 @@ def main():
     os.system('cls||clear')
     
     grille[1][1]= 1
-    grille[2][1]= 1
+    grille[1][1]= 1
+    grille[2][2]= 1
+    grille[2][3]= 1
     grille[3][1]= 1
+    grille[3][2]= 1
    
     
     print(displayMap(grille))
@@ -54,24 +57,13 @@ def main():
     # transfoGrid(grille)
     print("Itération : 0")
 
-    time.sleep(1)
+    time.sleep(3)
     
     
                       
 
     #Repeating the code below 30 times
     for n in range(30):
-        #assigning 0 and 1 values in order to calcul how many cells in the neighbourhood of the actual cell
-        #cleaning the fancier display we will do at the end of the loop
-        for ligne in grille:
-            for cell in range(10):
-                y= grille.index(ligne)
-                x= cell
-                if grille[y][x] == ".":
-                    grille[y][x] = 0
-                elif grille[y][x] == "X":
-                    grille[y][x] = 1
-
         #for each line of the grid
         for ligne in grille:
             m = len(ligne)
