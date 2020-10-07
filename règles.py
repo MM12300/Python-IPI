@@ -28,6 +28,8 @@ def main():
     print(ligneL)
     print(grilleL)
 
+    grille[2][2]=1
+
 
     for ligne in grille :
         print(ligne)
