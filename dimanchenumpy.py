@@ -43,6 +43,9 @@ def cap (a, arrayL):
     #in all other cases : value of index doesn't change
     else : 
         return a
+
+
+
 def transfoGrid(grid):
     for key in grid:
         print(key)
@@ -52,9 +55,11 @@ def main():
     vanillaGrid(10,10)
 
     os.system('cls||clear')
+    
     print(displayMap(grille))
+    
     # transfoGrid(grille)
-    print("Itération : 1")
+    print("Itération : 0")
     time.sleep(1)
 
                       
@@ -104,9 +109,12 @@ def main():
                 
                 #Only in this 2 cases the cell state is changing, if none of this 2 rules apply then the cell keep the same state
         os.system('cls||clear')
+        
         print(displayMap(grille))
+        
+
         # transfoGrid(grille)
-        print("Itérations : "+str(n+1))
+        print("Itération : "+str(n+1))
         time.sleep(1)
 
         #Change the value of the cells for a fancier display
