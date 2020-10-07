@@ -9,7 +9,7 @@ grille=[]
 #Adding n sublist, each of lenght m
 def vanillaGrid(m,n):
     for n in range(n):
-        grille.append([random.randrange(0,2) for i in range(m)])
+        grille.append([0 for i in range(m)])
     return grille
   
 def displayMap(map):
@@ -46,7 +46,7 @@ def main():
 
 
     grille[1][1] = 1
-    grille[2][2] = 1
+    grille[2][3] = 1
     grille[3][1] = 1
     grille[3][2] = 1
     grille[3][3] = 1
@@ -58,7 +58,7 @@ def main():
     # transfoGrid(grille)
     print("Itération : 0")
 
-    time.sleep(10)
+    time.sleep(1)
     
     
                       
