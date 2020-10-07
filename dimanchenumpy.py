@@ -40,7 +40,7 @@ def cap (a, arrayL):
 
 def main():
     #Creating a grid
-    vanillaGrid(25,25)
+    vanillaGrid(10,10)
 
     os.system('cls||clear')
     
@@ -48,7 +48,7 @@ def main():
     
     # transfoGrid(grille)
     print("Itération : 0")
-    time.sleep(1)
+    time.sleep(10)
 
                       
 
@@ -104,26 +104,11 @@ def main():
         os.system('cls||clear')
         
         print(displayMap(grille))
-        
-
-        # transfoGrid(grille)
+                # transfoGrid(grille)
         print("Itération : "+str(n+1))
         time.sleep(1)
 
-        #Change the value of the cells for a fancier display
-        # for ligne in grille:
-        #     for cell in range(m):
-        #         y= grille.index(ligne)
-        #         x= cell
-        #         if grille[y][x] == 0:
-        #             print("test")
-        #             grille[y][x] = "o"
-        #         elif grille[y][x] == 1:
-        #             print("tesssss")
-        #             grille[y][x] = "X"
 
-
-  
         
 
 if __name__=='__main__':
