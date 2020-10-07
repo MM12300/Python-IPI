@@ -50,6 +50,8 @@ def main():
     grille[2][3]= 1
     grille[3][1]= 1
     grille[3][2]= 1
+
+    grille[4][4]= 1
    
     
     print(displayMap(grille))
@@ -70,9 +72,10 @@ def main():
             grilleL= len(grille)-1
             ligneL = len(ligne)-1
             #for each cell of the grid
-            for cell in range(0,m):
+            y= grille.index(ligne)
+            print(ligne)
+            for cell in range(m):
                 #coordinates system
-                y= grille.index(ligne)
                 x= cell
 
                 
@@ -87,10 +90,8 @@ def main():
                                     +grille[cap(y+1,grilleL)][cap(x+1,ligneL)]
                                     )
                 
-                
-                print(y,x)
-                print(neighborhood)
                 time.sleep(1)
+                print(y,x)
 
 
                 if grille[y][x]  == 1: 
