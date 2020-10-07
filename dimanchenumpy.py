@@ -16,7 +16,7 @@ def displayMap(map):
     for item in map:
         row = ""
         for value in item:
-            row += "X " if(value) else "o "
+            row += "X " if(value) else ". "
 
         print(row)
 
@@ -40,7 +40,7 @@ def cap (a, arrayL):
 
 def main():
     #Creating a grid
-    vanillaGrid(10,10)
+    vanillaGrid(25,25)
 
     os.system('cls||clear')
     
@@ -60,7 +60,7 @@ def main():
             for cell in range(10):
                 y= grille.index(ligne)
                 x= cell
-                if grille[y][x] == "o":
+                if grille[y][x] == ".":
                     grille[y][x] = 0
                 elif grille[y][x] == "X":
                     grille[y][x] = 1
@@ -86,14 +86,19 @@ def main():
                                     +grille[cap(x+1,ligneL)][cap(y,grilleL)]
                                     +grille[cap(x+1,ligneL)][cap(y+1,grilleL)]
                                     )
-                #if less than 2 cells or more than 3 cells in the neighborhood, the cell is dead (=0)
-                if (neighborhood < 2) or (neighborhood > 3):
-                    #dead
-                    grille[y][x]=0
-                #if exactly 3 cells in the neighborhood, the cell is alive
-                elif neighborhood == 3:
+                #if a cell is alive
+                if grille[y][x] == 1:                 
+                    #if less than 2 cells or more than 3 cells in the neighborhood, the cell is dead (=0)
+                    if (neighborhood < 2) or (neighborhood > 3):
+                        #dead
+                        grille[y][x]=0
+
+                #else : the cell is dead (==0)
+                else :
+                    #if exactly 3 cells in the neighborhood, the cell is alive
+                    if neighborhood == 3:
                     #alive
-                    grille[y][x]=1
+                        grille[y][x]=1
                 
                 #Only in this 2 cases the cell state is changing, if none of this 2 rules apply then the cell keep the same state
         os.system('cls||clear')
