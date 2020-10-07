@@ -41,19 +41,17 @@ def cap (a, arrayL):
 def main():
     #Creating a grid
     vanillaGrid(5,5)
-    print(grille)
-    time.sleep(5)
+    print(displayMap(grille))
 
     os.system('cls||clear')
     
-    # grille[1][1]= 1
-    # grille[1][1]= 1
-    # grille[2][2]= 1
-    # grille[2][3]= 1
-    # grille[3][1]= 1
-    # grille[3][2]= 1
+    grille[1][1]= 1
+    grille[1][1]= 1
+    grille[2][2]= 1
+    grille[2][3]= 1
+    grille[3][1]= 1
+    grille[3][2]= 1
 
-    # grille[4][3]= 1
    
     
     print(displayMap(grille))
@@ -75,40 +73,29 @@ def main():
             ligneL = len(grille[0])-1
             #for each cell of the grid
             y= ligne
-            print(y)
             for cell in range(m):
                 #coordinates system
                 x= cell
 
                 
-                neighborhood=int(
-                                    grille[cap(y-1,grilleL)][cap(x-1, ligneL)]
-                                    +grille[cap(y-1,grilleL)][cap(x,ligneL)]
-                                    +grille[cap(y-1,grilleL)][cap(x+1,ligneL)]
-                                    +grille[cap(y,grilleL)][cap(x-1, ligneL)]
-                                    +grille[cap(y,grilleL)][cap(x+1,ligneL)]
-                                    +grille[cap(y+1,grilleL)][cap(x-1, ligneL)]
-                                    +grille[cap(y+1,grilleL)][cap(x,ligneL)]
-                                    +grille[cap(y+1,grilleL)][cap(x+1,ligneL)]
-                                    )
-                
-                time.sleep(1)
-                print(y,x)
+                neighborhood=int(grille[cap(y-1,grilleL)][cap(x-1, ligneL)])+int(grille[cap(y-1,grilleL)][cap(x,ligneL)])+int(grille[cap(y-1,grilleL)][cap(x+1,ligneL)])+int(grille[cap(y-1,grilleL)][cap(x+1,ligneL)])+int(grille[cap(y,grilleL)][cap(x-1, ligneL)])+int(grille[cap(y,grilleL)][cap(x+1,ligneL)])+int(grille[cap(y+1,grilleL)][cap(x-1, ligneL)])+int(grille[cap(y+1,grilleL)][cap(x,ligneL)])+int(grille[cap(y+1,grilleL)][cap(x+1,ligneL)])
+
+                # print(y,x)
+                # print(neighborhood)
 
 
                 if grille[y][x]  == 1: 
-                    if (neighborhood < 2) or (neighborhood > 3): 
+                    if (neighborhood == 2) or (neighborhood == 3): 
                         grille[y][x] = 0 
                 else: 
                     if neighborhood == 3: 
                         grille[y][x] = 1
                 
                 #Only in this 2 cases the cell state is changing, if none of this 2 rules apply then the cell keep the same state
-        time.sleep(10)
+        time.sleep(1)
         os.system('cls||clear')
         
         print(displayMap(grille))
-                # transfoGrid(grille)
         print("Itération : "+str(n+1))
         
 
