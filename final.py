@@ -1,3 +1,6 @@
+import time
+
+
 #Creating an empty grid (list)
 grille=[]
 
@@ -11,19 +14,16 @@ def transfoGrid(grid):
     for key in grid:
         print(key)    
 
-def cap (a, arrayL):
-    #if index is <0 then we go to the other side of the grid : maximum index
-    if a < 0 :
-        a = arrayL
+def cap (a, array):
+    L = array
+    if a < 0:
+        a = L
         return a
-    #if index is > to the length of the sublist then we go to the other side of the grid : index [0]
-    elif a > arrayL :
+    elif a > array :
         a = 0
         return a
-    #in all other cases : value of index doesn't change
     else : 
         return a
-
 
 def voisin(y,x):
     #voisinage
@@ -39,9 +39,40 @@ def voisin(y,x):
     neighborhood = NW + N + NE + W + E + SW + S + SE
     return print(neighborhood)
   
+def voisin2(y,x, grille):
+    grilleL=len(grille)-1
+    ligneL=len(grille[0])-1
 
-def cap ():pass
+    #voisinage
+    NW = grille[cap(y-1, grilleL)][cap(x-1, ligneL)]
+    N = grille[cap(y-1, grilleL)][cap(x, ligneL)]
+    NE = grille[cap(y-1, grilleL)][cap(x+1, ligneL)]
+    W = grille[cap(y, grilleL)][cap(x-1, ligneL)]
+    E = grille[cap(y, grilleL)][cap(x+1, ligneL)]
+    SW = grille[cap(y+1, grilleL)][cap(x-1, ligneL)]
+    S = grille[cap(y+1, grilleL)][cap(x, ligneL)]
+    SE = grille[cap(y+1, grilleL)][cap(x+1, ligneL)]
 
+    neighborhood = NW + N + NE + W + E + SW + S + SE
+    return print(neighborhood)
+
+
+def voisin3(y,x, grille):
+    grilleL=len(grille)-1
+    ligneL=len(grille[0])-1
+
+    #voisinage
+    NW = grille[cap(y-1, grilleL)][cap(x-1, ligneL)]
+    N = grille[cap(y-1, grilleL)][cap(x, ligneL)]
+    NE = grille[cap(y-1, grilleL)][cap(x+1, ligneL)]
+    W = grille[cap(y, grilleL)][cap(x-1, ligneL)]
+    E = grille[cap(y, grilleL)][cap(x+1, ligneL)]
+    SW = grille[cap(y+1, grilleL)][cap(x-1, ligneL)]
+    S = grille[cap(y+1, grilleL)][cap(x, ligneL)]
+    SE = grille[cap(y+1, grilleL)][cap(x+1, ligneL)]
+
+    neighborhood = NW + N + NE + W + E + SW + S + SE
+    return print(neighborhood)
 
 def main():
     vanillaGrid(5,5)
@@ -56,6 +87,21 @@ def main():
     print("Index [X] maximum")
     ligneL=len(grille[0])-1
     print(ligneL)
+    
+    print("test de cap sur grilleL")
+    print("Cap de 0-1 renvoit bien 4, soit la longueur max du tableau")
+    print(cap(0-1, grilleL))
+
+    print("Cap de 2 renvoit bien 2, car 2<4")
+    print(cap(2, grilleL))
+
+    print("Cap de 0 renvoit bien 2, car 4+1 > L tableau")
+    print(cap(4+1, grilleL))
+
+    # time.sleep(100)
+
+    
+
 
 
     print("coordonnées de la grille")
@@ -64,56 +110,69 @@ def main():
         for cell in range(len(grille[0])):
             x = cell
             print(y,x)
+            voisin2(x,y,grille)
+
     
-    grille[2][2]= 1
-    print(grille[2][2])
+    # time.sleep(100)
+    
+    # grille[2][2]= 1
+    # print(grille[2][2])
  
    
 
-    print("une grille de 5 par 5 avec un ensemble de 1 au centre")
-    transfoGrid(grille)
+    # print("une grille de 5 par 5 avec un ensemble de 1 au centre")
+    # transfoGrid(grille)
 
 
-    grille[1][1]=1
-    grille[1][2]=1
-    grille[1][3]=1
-    grille[2][1]=1
-    grille[2][3]=1
+    # grille[1][1]=1
+    # grille[1][2]=1
+    # grille[1][3]=1
+    # grille[2][1]=1
+    # grille[2][3]=1
+    # grille[3][1]=1
+    # grille[3][2]=1
+    # grille[3][3]=1
+
+    # print("une grille de 5 par 5 avec des nouveaux voisins")
+    # transfoGrid(grille)
+
+   
+    # print("le voisinage est bien de 8")
+    voisin2(2,2, grille)
+
+
+    grille[0][0]=1
+    grille[0][1]=1
+    grille[3][4]=1
+    grille[4][4]=1
+    grille[3][0]=1
     grille[3][1]=1
-    grille[3][2]=1
-    grille[3][3]=1
+    grille[4][1]=1
+    grille[0][4]=1
 
-    print("une grille de 5 par 5 avec des nouveaux voisins")
+    
+
+
+
+
+
+
+    print("voisinage d'une cellule en coin")
     transfoGrid(grille)
-
-    voisin(2,2)
-
-
+    voisin2(4,0, grille)
+    print("on a bien 8 donc l'hypothèse d'un wrap fonctionnel est confirmé")
 
 
 
+    for indexY, value in enumerate(grille):
+        y = indexY
+        for cell in range(len(grille[0])):
+            x = cell
+            print(y,x)
+            voisin2(x,y,grille)
 
 
 
-
-    # for ligne in grille :
-    #     print(ligne)
- 
-    # for index, value in enumerate(grille):
-    #     y = index
-    #     for cell in range(5):
-    #         x = cell
-            
-
-    #         neighborhood=int(grille[cap(y-1,grilleL)][cap(x-1, ligneL)])+int(grille[cap(y-1,grilleL)][cap(x,ligneL)])+int(grille[cap(y-1,grilleL)][cap(x+1,ligneL)])+int(grille[cap(y-1,grilleL)][cap(x+1,ligneL)])+int(grille[cap(y,grilleL)][cap(x-1, ligneL)])+int(grille[cap(y,grilleL)][cap(x+1,ligneL)])+int(grille[cap(y+1,grilleL)][cap(x-1, ligneL)])+int(grille[cap(y+1,grilleL)][cap(x,ligneL)])+int(grille[cap(y+1,grilleL)][cap(x+1,ligneL)])
-    #         print(y,x)
-    #         print(neighborhood)
-    #         if grille[y][x]  == 1: 
-    #                 if (neighborhood < 2) or (neighborhood > 3): 
-    #                     grille[y][x] = 0 
-    #         else: 
-    #             if neighborhood == 3: 
-    #                 grille[y][x] = 1
 
 if __name__=='__main__':
     main()
