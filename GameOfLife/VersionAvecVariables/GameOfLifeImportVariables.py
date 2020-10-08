@@ -67,6 +67,7 @@ def GameOfLife(grille, nbLignes, nbColonnes, iterations):
     os.system('cls||clear')
     grille=[]
     grille = randomGrid(nbLignes,nbColonnes)
+    displayMap(grille)
     
     # ## PARTIE 4 : oscillator
     # grille[1][2]=1
@@ -172,20 +173,7 @@ def GameOfLifeDemo(grille, nbLignes, nbColonnes, iterations):
 
 
 def main():
-    print(variables.colonnes)
-    # GameOfLife(grille, 10, 10, 30)
-    menu = input("Choose your game :  1- DEMO 2- Random Grid : ")
-    if menu == '1' :
-        GameOfLifeDemo(grille, 25, 25, 30)
-    elif menu == '2' :
-        lignes = input("Combien de colonnes ?")
-        colonnes = input("Combien de lignes ?")
-        iterations = input("Combien d'itérations ?")
-        GameOfLife(grille,int(lignes),int(colonnes),int(iterations))
-    else :
-        while menu !='1' or menu !='2' :
-            print ("Please choose 1 or 2 only !")
-            menu = input("Choose your game :  1- DEMO 2- Random Grid ")
+    GameOfLife(grille, variables.lignes, variables.colonnes, variables.iterations)
 
 
 

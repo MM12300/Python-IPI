@@ -1,3 +1,3 @@
-lignes = 25
-colonnes = 25
+lignes = 10
+colonnes = 10
 iterations = 30
