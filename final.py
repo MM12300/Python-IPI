@@ -2,14 +2,15 @@ import time
 
 
 #Creating an empty grid (list)
-grille=[]
+grilleRead=[]
+grilleWrite=[]
 
 
 #Adding n sublist, each of lenght m
-def vanillaGrid(m,n):
+def vanillaGrid(m,n,grid):
     for n in range(n):
-        grille.append([1 for i in range(m)])
-    return grille
+        grid.append([0 for i in range(m)])
+    return grid
 
 def transfoGrid(grid):
     for key in grid:
@@ -95,7 +96,9 @@ def voisin4(y,x, indexM):
 
 
 def main():
-    vanillaGrid(5,5)
+    grille = vanillaGrid(5,5, grilleRead)
+
+    grilleW = vanillaGrid(5,5, grilleWrite)
 
     print("Création de la grille")
     print(grille)
@@ -184,35 +187,34 @@ def main():
 
 
 
-### PARTIE 4 : oscillator
-    # grille[1][2]=1
-    # grille[2][2]=1
-    # grille[3][2]=1
+## PARTIE 4 : oscillator
+    grille[1][2]=1
+    grille[2][2]=1
+    grille[3][2]=1
     transfoGrid(grille)
 
 
     print("print état de départ")
-
-    voisin2(0,1,grille)
     
     for n in range(1):
         for indexY, value in enumerate(grille):
             y = indexY
             for cell in range(len(grille[0])):
                 x = cell
-                neighborhood = voisin2(y,x,4)
+                
                 print(y,x)
+                neighborhood = voisin3(y,x,grille)
                 print(neighborhood)
 
                 if grille[y][x] == 1 :
                     if neighborhood == 2 or neighborhood == 3:
-                        grille[y][x] = 1
+                        grilleW[y][x] = 1
                     else:
-                        grille[y][x] = 0
+                        grilleW[y][x] = 0
                 else:
                     if neighborhood == 3:
-                        grille[y][x] = 1
-        transfoGrid(grille)
+                        grilleW[y][x] = 1
+        transfoGrid(grilleW)
         print("après un tour")
 
 
