@@ -115,15 +115,18 @@ def main():
     
     # time.sleep(100)
     
+
+
+    ####### PARTIE 1
     # grille[2][2]= 1
     # print(grille[2][2])
- 
-   
-
     # print("une grille de 5 par 5 avec un ensemble de 1 au centre")
     # transfoGrid(grille)
 
 
+
+
+    ##### PARTIE 2
     # grille[1][1]=1
     # grille[1][2]=1
     # grille[1][3]=1
@@ -138,44 +141,53 @@ def main():
 
    
     # print("le voisinage est bien de 8")
-    voisin2(2,2, grille)
+    # voisin2(2,2, grille)
 
 
-    grille[0][0]=1
-    grille[0][1]=1
-    grille[3][4]=1
-    grille[4][4]=1
-    grille[3][0]=1
-    grille[3][1]=1
-    grille[4][1]=1
-    grille[0][4]=1
 
 
-    print("voisinage d'une cellule en coin")
+##### PARTIE 3
+    # grille[0][0]=1
+    # grille[0][1]=1
+    # grille[3][4]=1
+    # grille[4][4]=1
+    # grille[3][0]=1
+    # grille[3][1]=1
+    # grille[4][1]=1
+    # grille[0][4]=1
+
+
+    # print("voisinage d'une cellule en coin")
+    # transfoGrid(grille)
+    # voisin2(4,0, grille)
+    # print("on a bien 8 donc l'hypothèse d'un wrap fonctionnel est confirmé")
+
+
+    grille[1][2]=1
+    grille[2][2]=1
+    grille[3][2]=1
     transfoGrid(grille)
-    voisin2(4,0, grille)
-    print("on a bien 8 donc l'hypothèse d'un wrap fonctionnel est confirmé")
 
 
-
+    print("print état de départ")
     
-    
-    for indexY, value in enumerate(grille):
-        y = indexY
-        for cell in range(len(grille[0])):
-            x = cell
-            neighborhood = voisin3(x,y,grille)
+    for n in range(5):
+        for indexY, value in enumerate(grille):
+            y = indexY
+            for cell in range(len(grille[0])):
+                x = cell
+                neighborhood = voisin3(x,y,grille)
 
-            if grille[y][x] == 1 :
-                if neighborhood == 2 or neighborhood == 3:
-                    grille[y][x] = 1
+                if grille[y][x] == 1 :
+                    if neighborhood == 2 or neighborhood == 3:
+                        grille[y][x] = 1
+                    else:
+                        grille[y][x] = 0
                 else:
-                    grille[y][x] = 0
-            else:
-                if neighborhood == 3:
-                    grille[y][x] = 1
-    transfoGrid(grille)
-    print("ça à l'air de marcher")
+                    if neighborhood == 3:
+                        grille[y][x] = 1
+        transfoGrid(grille)
+        print("après un tour")
 
 
 
