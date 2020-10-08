@@ -107,6 +107,11 @@ def GameOfLifeDemo(grille, nbLignes, nbColonnes, iterations):
     grille[2][15]=1
     grille[3][15]=1
 
+
+    #MOVING
+
+
+
     #Spaceship
     grille[1][2]=1
     grille[2][3]=1
@@ -114,13 +119,25 @@ def GameOfLifeDemo(grille, nbLignes, nbColonnes, iterations):
     grille[3][2]=1
     grille[3][3]=1
 
-
+    #Toad
     grille[20][20]=1
     grille[20][21]=1
     grille[20][22]=1
     grille[21][19]=1
-    grille[21][18]=1
-    grille[21][18]=1
+    grille[21][20]=1
+    grille[21][21]=1
+
+    #Beacon
+    grille[20][4]=1
+    grille[20][5]=1
+    grille[21][4]=1
+    grille[21][5]=1
+    grille[22][6]=1
+    grille[22][7]=1
+    grille[23][6]=1
+    grille[23][7]=1
+
+
 
 
     displayMap(grille)
@@ -155,7 +172,24 @@ def GameOfLifeDemo(grille, nbLignes, nbColonnes, iterations):
 
 def main():
     # GameOfLife(grille, 10, 10, 30)
-    GameOfLifeDemo(grille,25,25,30)
+    menu = input("Choose your game :  1- DEMO 2- Random Grid : ")
+    if menu == '1' :
+        GameOfLifeDemo(grille, 25, 25, 30)
+    elif menu == '2' :
+        lignes = input("Combien de colonnes ?")
+        colonnes = input("Combien de lignes ?")
+        iterations = input("Combien d'itérations ?")
+        GameOfLife(grille,int(lignes),int(colonnes),int(iterations))
+    else :
+        while menu !='1' or menu !='2' :
+            print ("Please choose 1 or 2 only !")
+            menu = input("Choose your game :  1- DEMO 2- Random Grid ")
+
+
+
+
+
+
 #     grille = vanillaGrid(5,5)
 
 
