@@ -4,6 +4,7 @@ import time
 #Creating an empty grid (list)
 grille=[]
 
+
 #Adding n sublist, each of lenght m
 def vanillaGrid(m,n):
     for n in range(n):
@@ -72,7 +73,7 @@ def voisin3(y,x, grille):
     SE = grille[cap(y+1, grilleL)][cap(x+1, ligneL)]
 
     neighborhood = NW + N + NE + W + E + SW + S + SE
-    return print(neighborhood)
+    return neighborhood
 
 def main():
     vanillaGrid(5,5)
@@ -110,7 +111,6 @@ def main():
         for cell in range(len(grille[0])):
             x = cell
             print(y,x)
-            voisin2(x,y,grille)
 
     
     # time.sleep(100)
@@ -150,12 +150,6 @@ def main():
     grille[4][1]=1
     grille[0][4]=1
 
-    
-
-
-
-
-
 
     print("voisinage d'une cellule en coin")
     transfoGrid(grille)
@@ -164,12 +158,24 @@ def main():
 
 
 
+    
+    
     for indexY, value in enumerate(grille):
         y = indexY
         for cell in range(len(grille[0])):
             x = cell
-            print(y,x)
-            voisin2(x,y,grille)
+            neighborhood = voisin3(x,y,grille)
+
+            if grille[y][x] == 1 :
+                if neighborhood == 2 or neighborhood == 3:
+                    grille[y][x] = 1
+                else:
+                    grille[y][x] = 0
+            else:
+                if neighborhood == 3:
+                    grille[y][x] = 1
+    transfoGrid(grille)
+    print("ça à l'air de marcher")
 
 
 
