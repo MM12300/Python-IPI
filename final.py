@@ -78,6 +78,8 @@ def voisin3(y,x, grille):
 
 def voisin4(y,x, indexM):
 
+    print(y,x)
+
     #voisinage
     NW = grille[cap(y-1, indexM)][cap(x-1, indexM)]
     N = grille[cap(y-1, indexM)][cap(x, indexM)]
@@ -190,13 +192,15 @@ def main():
 
 
     print("print état de départ")
+
+    voisin2(0,1,grille)
     
     for n in range(1):
         for indexY, value in enumerate(grille):
             y = indexY
             for cell in range(len(grille[0])):
                 x = cell
-                neighborhood = voisin4(y,x,4)
+                neighborhood = voisin2(y,x,4)
                 print(y,x)
                 print(neighborhood)
 
@@ -210,6 +214,8 @@ def main():
                         grille[y][x] = 1
         transfoGrid(grille)
         print("après un tour")
+
+
 
 
 
