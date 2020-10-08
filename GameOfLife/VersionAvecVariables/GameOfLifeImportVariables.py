@@ -2,6 +2,9 @@ import time
 import os
 import random
 
+import variables
+
+
 
 #Creating an empty grid (list)
 grille=[]
@@ -168,9 +171,8 @@ def GameOfLifeDemo(grille, nbLignes, nbColonnes, iterations):
                 
 
 
-
-
 def main():
+    print(variables.colonnes)
     # GameOfLife(grille, 10, 10, 30)
     menu = input("Choose your game :  1- DEMO 2- Random Grid : ")
     if menu == '1' :
