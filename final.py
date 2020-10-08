@@ -3,7 +3,7 @@ import os
 
 
 #Creating an empty grid (list)
-
+grille=[]
 #Adding n sublist, each of lenght m
 def vanillaGrid(m,n):
     grid=[]
@@ -51,27 +51,21 @@ def voisin3(y,x, grille):
     neighborhood = NW + N + NE + W + E + SW + S + SE
     return neighborhood
 
-def main():
-    grille = vanillaGrid(5,5)
 
-
-## PARTIE 4 : oscillator
+def GameOfLife(grille, nbLignes, nbColonnes, iterations):
+    grille=[]
+    grille = vanillaGrid(nbLignes,nbColonnes)
+    ## PARTIE 4 : oscillator
     grille[1][2]=1
     grille[2][2]=1
     grille[3][2]=1
-    transfoGrid(grille)
-
-
-    print("print état de départ")
-    
-    for n in range(10):
-        grilleW = zeroGrid(5,5)
+    for n in range(iterations):
+        grilleW = zeroGrid(nbLignes,nbColonnes)
         for indexY, value in enumerate(grille):
             y = indexY
             for cell in range(len(grille[0])):
                 x = cell
                 neighborhood = voisin3(y,x,grille)
-
                 if grille[y][x] == 1 :
                     if neighborhood == 2 or neighborhood == 3:
                         grilleW[y][x] = 1
@@ -85,6 +79,46 @@ def main():
         grille=grilleW.copy()
         time.sleep(1)
         os.system('cls||clear')
+                
+
+
+
+
+def main():
+    GameOfLife(grille, 5, 5, 30)
+#     grille = vanillaGrid(5,5)
+
+
+# ## PARTIE 4 : oscillator
+#     grille[1][2]=1
+#     grille[2][2]=1
+#     grille[3][2]=1
+#     transfoGrid(grille)
+
+
+#     print("print état de départ")
+    
+#     for n in range(10):
+#         grilleW = zeroGrid(5,5)
+#         for indexY, value in enumerate(grille):
+#             y = indexY
+#             for cell in range(len(grille[0])):
+#                 x = cell
+#                 neighborhood = voisin3(y,x,grille)
+
+#                 if grille[y][x] == 1 :
+#                     if neighborhood == 2 or neighborhood == 3:
+#                         grilleW[y][x] = 1
+#                     else:
+#                         grilleW[y][x] = 0
+#                 else:
+#                     if neighborhood == 3:
+#                         grilleW[y][x] = 1
+#         transfoGrid(grilleW)
+#         print("après un tour")
+#         grille=grilleW.copy()
+#         time.sleep(1)
+#         os.system('cls||clear')
 
 
 
