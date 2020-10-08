@@ -8,7 +8,7 @@ grille=[]
 #Adding n sublist, each of lenght m
 def vanillaGrid(m,n):
     for n in range(n):
-        grille.append([0 for i in range(m)])
+        grille.append([1 for i in range(m)])
     return grille
 
 def transfoGrid(grid):
@@ -74,6 +74,23 @@ def voisin3(y,x, grille):
 
     neighborhood = NW + N + NE + W + E + SW + S + SE
     return neighborhood
+
+
+def voisin4(y,x, indexM):
+
+    #voisinage
+    NW = grille[cap(y-1, indexM)][cap(x-1, indexM)]
+    N = grille[cap(y-1, indexM)][cap(x, indexM)]
+    NE = grille[cap(y-1, indexM)][cap(x+1, indexM)]
+    W = grille[cap(y, indexM)][cap(x-1, indexM)]
+    E = grille[cap(y, indexM)][cap(x+1, indexM)]
+    SW = grille[cap(y+1, indexM)][cap(x-1, indexM)]
+    S = grille[cap(y+1, indexM)][cap(x, indexM)]
+    SE = grille[cap(y+1, indexM)][cap(x+1, indexM)]
+
+    neighborhood = NW + N + NE + W + E + SW + S + SE
+    return neighborhood
+
 
 def main():
     vanillaGrid(5,5)
@@ -163,20 +180,25 @@ def main():
     # print("on a bien 8 donc l'hypothèse d'un wrap fonctionnel est confirmé")
 
 
-    grille[1][2]=1
-    grille[2][2]=1
-    grille[3][2]=1
+
+
+### PARTIE 4 : oscillator
+    # grille[1][2]=1
+    # grille[2][2]=1
+    # grille[3][2]=1
     transfoGrid(grille)
 
 
     print("print état de départ")
     
-    for n in range(5):
+    for n in range(1):
         for indexY, value in enumerate(grille):
             y = indexY
             for cell in range(len(grille[0])):
                 x = cell
-                neighborhood = voisin3(x,y,grille)
+                neighborhood = voisin4(y,x,4)
+                print(y,x)
+                print(neighborhood)
 
                 if grille[y][x] == 1 :
                     if neighborhood == 2 or neighborhood == 3:
