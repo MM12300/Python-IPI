@@ -6,7 +6,7 @@ import random
 #Creating an empty grid (list)
 grille=[]
 #Adding n sublist, each of lenght m
-def vanillaGrid(m,n):
+def randomGrid(m,n):
     grid=[]
     for n in range(n):
         grid.append([random.randrange(0,2) for i in range(m)])
@@ -63,13 +63,14 @@ def displayMap(map):
 def GameOfLife(grille, nbLignes, nbColonnes, iterations):
     os.system('cls||clear')
     grille=[]
-    grille = vanillaGrid(nbLignes,nbColonnes)
+    grille = zeroGrid(nbLignes,nbColonnes)
     
     ## PARTIE 4 : oscillator
-    # grille[1][2]=1
-    # grille[2][2]=1
-    # grille[3][2]=1
+    grille[1][2]=1
+    grille[2][2]=1
+    grille[3][2]=1
     transfoGrid(grille)
+    displayMap(grille)
     
     print('start')
     time.sleep(1)
@@ -90,6 +91,7 @@ def GameOfLife(grille, nbLignes, nbColonnes, iterations):
                         grilleW[y][x] = 1
         os.system('cls||clear')
         transfoGrid(grilleW)
+        displayMap(grilleW)
         print("après un tour")
         grille=grilleW.copy()
         time.sleep(1)
