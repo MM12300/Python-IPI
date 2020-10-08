@@ -196,7 +196,7 @@ def main():
 
     print("print état de départ")
     
-    for n in range(1):
+    for n in range(10):
         for indexY, value in enumerate(grille):
             y = indexY
             for cell in range(len(grille[0])):
@@ -216,6 +216,7 @@ def main():
                         grilleW[y][x] = 1
         transfoGrid(grilleW)
         print("après un tour")
+        time.sleep(1)
 
 
 
