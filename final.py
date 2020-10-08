@@ -1,5 +1,6 @@
 import time
 import os
+import random
 
 
 #Creating an empty grid (list)
@@ -8,7 +9,7 @@ grille=[]
 def vanillaGrid(m,n):
     grid=[]
     for n in range(n):
-        grid.append([0 for i in range(m)])
+        grid.append([random.randrange(0,2) for i in range(m)])
     return grid
 
 def zeroGrid(m,n):
@@ -51,14 +52,27 @@ def voisin3(y,x, grille):
     neighborhood = NW + N + NE + W + E + SW + S + SE
     return neighborhood
 
+def displayMap(map):
+    for item in map:
+        row = ""
+        for value in item:
+            row += "X " if(value) else ". "
+
+        print(row)
 
 def GameOfLife(grille, nbLignes, nbColonnes, iterations):
+    os.system('cls||clear')
     grille=[]
     grille = vanillaGrid(nbLignes,nbColonnes)
+    
     ## PARTIE 4 : oscillator
-    grille[1][2]=1
-    grille[2][2]=1
-    grille[3][2]=1
+    # grille[1][2]=1
+    # grille[2][2]=1
+    # grille[3][2]=1
+    transfoGrid(grille)
+    
+    print('start')
+    time.sleep(1)
     for n in range(iterations):
         grilleW = zeroGrid(nbLignes,nbColonnes)
         for indexY, value in enumerate(grille):
@@ -74,6 +88,7 @@ def GameOfLife(grille, nbLignes, nbColonnes, iterations):
                 else:
                     if neighborhood == 3:
                         grilleW[y][x] = 1
+        os.system('cls||clear')
         transfoGrid(grilleW)
         print("après un tour")
         grille=grilleW.copy()
@@ -85,7 +100,7 @@ def GameOfLife(grille, nbLignes, nbColonnes, iterations):
 
 
 def main():
-    GameOfLife(grille, 5, 5, 30)
+    GameOfLife(grille, 10, 10, 30)
 #     grille = vanillaGrid(5,5)
 
 
